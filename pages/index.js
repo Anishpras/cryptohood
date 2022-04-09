@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import PortfolioChart from "../components/PortfolioChart";
 import BuyTokens from "../components/BuyTokens";
 import Notice from "../components/Notice";
+import Asset from "../components/Asset";
 
 //Icons
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -74,12 +75,12 @@ export default function Home() {
 
             <BiDotsHorizontalRounded className={styles.moreOptions} />
           </div>
-          {/* {myCoins.map((coin) => {
+          {myCoins.map((coin) => {
             let price = parseFloat(coin.price);
             price = price.toFixed(2);
 
             return <Asset key={coin.uuid} coin={coin} price={price} />;
-          })} */}
+          })}
 
           <div className={styles.rightMainItem}>
             <div className={styles.ItemTitle}>Lists</div>
