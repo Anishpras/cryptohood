@@ -5,7 +5,6 @@ import { CryptohoodProvider } from "../context/CryptohoodContext";
 function MyApp({ Component, pageProps }) {
   return (
     <MoralisProvider
-      // This should be in a .env file
       serverUrl={process.env.MORALIS_SERVER_URL}
       appId={process.env.MORALIS_APP_ID}>
       <CryptohoodProvider>
