@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { AiOutlineSearch } from "react-icons/ai";
 import logo from "../assets/logo.png";
+
+import { useContext } from "react";
+import { CryptohoodContext } from "../context/CryptohoodContext";
 //styles
 const styles = {
   container: "flex w-screen h-16 bg-black px-24 py-3 mb-5 fixed",
@@ -17,6 +20,15 @@ const styles = {
 };
 
 const Header = () => {
+  const {
+    connectWallet,
+    signOut,
+    currentAccount,
+    isAuthenticated,
+    formattedAccount,
+    swapTokens,
+  } = useContext(CryptohoodContext);
+
   return (
     <div className={styles.container}>
       <div className={styles.leftHeader}>
