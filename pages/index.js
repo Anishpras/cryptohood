@@ -1,5 +1,6 @@
 //Components
 import Header from "../components/Header";
+import PortfolioChart from "../components/PortfolioChart";
 
 //Icons
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -35,7 +36,7 @@ const styles = {
 export default function Home() {
   return (
     <div className={styles.wrapper}>
-      <Header />
+      {/* <Header /> */}
       <div className={styles.mainContainer}>
         <div className={styles.leftMain}>
           <div className={styles.portfolioAmountContainer}>
@@ -47,7 +48,7 @@ export default function Home() {
           </div>
           <div>
             <div className={styles.chartContainer}>
-              {/* <PortfolioChart /> */}
+              <PortfolioChart />
             </div>
           </div>
           <div className={styles.buyingPowerContainer}>
