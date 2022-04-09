@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import {
@@ -43,7 +42,9 @@ export const CryptohoodProvider = ({ children }) => {
   }, [isAuthenticated, enableWeb3]);
 
   useEffect(() => {
-    if (!currentAccount) return;
+    if (!currentAccount) {
+      console.log("No account");
+    }
     (async () => {
       const response = await fetch("/api/createUser", {
         method: "POST",

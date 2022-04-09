@@ -23,7 +23,6 @@ const Header = () => {
   const {
     connectWallet,
     signOut,
-    currentAccount,
     isAuthenticated,
     formattedAccount,
     swapTokens,
@@ -34,8 +33,8 @@ const Header = () => {
       <div className={styles.leftHeader}>
         <Image
           src={logo}
-          height={100}
-          width={100}
+          height={20}
+          width={40}
           className={styles.logo}
           alt="Logo Image"
         />

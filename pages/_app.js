@@ -5,8 +5,8 @@ import { CryptohoodProvider } from "../context/CryptohoodContext";
 function MyApp({ Component, pageProps }) {
   return (
     <MoralisProvider
-      serverUrl={process.env.MORALIS_SERVER_URL}
-      appId={process.env.MORALIS_APP_ID}>
+      serverUrl="https://z04nnu74wfdl.usemoralis.com:2053/server"
+      appId="M7uUOSK5WkhPWGSTuCltp0Q9x35oph12SMk23Idg">
       <CryptohoodProvider>
         <Component {...pageProps} />
       </CryptohoodProvider>
