@@ -9,6 +9,11 @@ import Asset from "../components/Asset";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 
+//Dependencies
+import axios from "axios";
+import { useState, useContext } from "react";
+import { CryptohoodContext } from "../context/CryptohoodContext";
+
 //Styles
 const styles = {
   wrapper: "w-screen h-screen flex flex-col",
@@ -36,14 +41,16 @@ const styles = {
   moreOptions: "cursor-pointer text-xl",
 };
 
-export default function Home() {
+export default function Home({ coins }) {
+  const [myCoins] = useState([...coins.slice(0, 15)]);
+  const { balance } = useContext(CryptohoodContext);
   return (
     <div className={styles.wrapper}>
       <Header />
       <div className={styles.mainContainer}>
         <div className={styles.leftMain}>
           <div className={styles.portfolioAmountContainer}>
-            <div className={styles.portfolioAmount}>10 ETH</div>
+            <div className={styles.portfolioAmount}>{balance} ETH</div>
             <div className={styles.portfolioPercent}>
               +0.0008(+0.57%)
               <span className={styles.pastHour}>Past Hour</span>
@@ -56,7 +63,7 @@ export default function Home() {
           </div>
           <div className={styles.buyingPowerContainer}>
             <div className={styles.buyingPowerTitle}>Buying Power</div>
-            <div className={styles.buyingPowerAmount}>10 ETH</div>
+            <div className={styles.buyingPowerAmount}>{balance} ETH</div>
           </div>
           <div className={styles.notice}>
             <div className={styles.noticeContainer}>
@@ -91,3 +98,30 @@ export default function Home() {
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  const options = {
+    method: "GET",
+    url: "https://coinranking1.p.rapidapi.com/coins",
+    params: {
+      referenceCurrencyUuid: "yhjMzLPhuIDl",
+      timePeriod: "24h",
+      tiers: "1",
+      orderBy: "marketCap",
+      orderDirection: "desc",
+      limit: "50",
+      offset: "0",
+    },
+    headers: {
+      "X-RapidAPI-Host": process.env.COIN_RANKING_HOST,
+      "X-RapidAPI-Key": process.env.COIN_RANKING_KEY,
+    },
+  };
+
+  const res = await axios.request(options);
+  const coins = res.data.data.coins;
+
+  return {
+    props: { coins },
+  };
+};
